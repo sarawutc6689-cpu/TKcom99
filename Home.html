@@ -3,30 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TK_Taecom99- ซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่ายในราคาย่อมเยา</title>
+    <title>TK_Taecom99 | ซ่อมคอม ติดตั้งระบบเครือข่าย กล้องวงจรปิด</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --electric-purple: #b967ff;
+            --cyber-pink: #ff2a6d;
+            --matrix-green: #00ff9d;
+            --dark-bg: #0a0a14;
+            --dark-card: #161626;
+            --text-light: #ffffff;
+            --text-gray: #a0a0c0;
+            --accent-orange: #ff6b35;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #0077cc;
-            --secondary: #005fa3;
-            --accent: #ff6b35;
-            --light: #f8f9fa;
-            --dark: #333333;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
         }
         
         body {
-            background-color: #f5f7fa;
-            color: var(--dark);
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
             line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
         }
         
         .container {
@@ -36,15 +45,89 @@
             padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Neon Glow Effects */
+        .neon-text {
+            text-shadow: 0 0 10px var(--neon-blue), 
+                         0 0 20px var(--neon-blue), 
+                         0 0 30px var(--neon-blue);
+            color: var(--neon-blue);
+        }
+        
+        .neon-border {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue), 
+                       inset 0 0 15px rgba(0, 243, 255, 0.1);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 243, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        }
+        
+        /* แถบข้อความวิ่งด้านบนสุด - สไตล์ไซเบอร์ */
+        .cyber-marquee {
+            background: linear-gradient(90deg, #0a0a14 0%, var(--dark-card) 50%, #0a0a14 100%);
+            border-top: 1px solid var(--neon-blue);
+            border-bottom: 1px solid var(--electric-purple);
+            padding: 12px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .cyber-marquee::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+        
+        .cyber-marquee::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--electric-purple), transparent);
+        }
+        
+        .cyber-marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: cyber-marquee 25s linear infinite;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green), var(--electric-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+        
+        @keyframes cyber-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Header Styles - สไตล์ไซเบอร์ */
         header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
+            background-color: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
         }
         
         .header-container {
@@ -56,13 +139,22 @@
         .logo {
             display: flex;
             align-items: center;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .logo i {
             margin-right: 10px;
             font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         nav ul {
@@ -72,147 +164,219 @@
         
         nav ul li {
             margin-left: 30px;
+            position: relative;
         }
         
         nav ul li a {
-            color: white;
+            color: var(--text-gray);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
         
         nav ul li a:hover {
-            color: #ffd166;
+            color: var(--neon-blue);
+            background-color: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: none;
-            color: white;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
         
-        /* Hero Section */
+        /* Hero Section - สไตล์ไซเบอร์ */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(185, 103, 255, 0.1) 0%, transparent 50%),
+                        linear-gradient(180deg, #0a0a14 0%, #161626 100%);
             padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green), var(--electric-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 30px;
+            color: var(--text-gray);
         }
         
         .cta-button {
             display: inline-block;
-            background-color: var(--accent);
+            background: linear-gradient(90deg, var(--cyber-pink), var(--accent-orange));
             color: white;
-            padding: 15px 35px;
+            padding: 18px 40px;
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 42, 109, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
         
         .cta-button:hover {
-            background-color: #e55a2b;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 42, 109, 0.6);
         }
         
         /* Services Section */
         .section-title {
             text-align: center;
-            margin: 60px 0 40px;
-            color: var(--secondary);
-            font-size: 2.2rem;
+            margin: 80px 0 50px;
+            font-size: 2.5rem;
             position: relative;
+            padding-bottom: 20px;
         }
         
-        .section-title:after {
+        .section-title::after {
             content: '';
             position: absolute;
-            width: 80px;
+            width: 120px;
             height: 4px;
-            background-color: var(--accent);
-            bottom: -10px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            border-radius: 2px;
         }
         
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         
         .service-card {
-            background-color: white;
+            background-color: var(--dark-card);
             border-radius: 12px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            padding: 30px 25px;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--neon-blue), var(--matrix-green));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--neon-blue);
         }
         
         .service-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .service-card h3 {
             margin-bottom: 15px;
-            color: var(--secondary);
             font-size: 1.5rem;
+            color: var(--neon-blue);
+        }
+        
+        .service-card p {
+            color: var(--text-gray);
         }
         
         /* Price Section */
         .price-section {
-            background-color: var(--light);
-            padding: 60px 0;
+            padding: 80px 0;
+            background: radial-gradient(circle at 50% 0%, rgba(185, 103, 255, 0.1) 0%, transparent 50%);
         }
         
         .price-tag {
             display: inline-block;
-            background-color: var(--accent);
+            background: linear-gradient(90deg, var(--cyber-pink), var(--accent-orange));
             color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 12px 30px;
+            border-radius: 50px;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 42, 109, 0.4);
+            font-family: 'Orbitron', sans-serif;
         }
         
         .price-description {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
             font-size: 1.1rem;
-            color: var(--gray);
+            color: var(--text-gray);
         }
         
         /* Features Section */
@@ -221,37 +385,49 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         
         .feature {
             display: flex;
             align-items: center;
-            background-color: white;
-            padding: 20px;
+            background-color: var(--dark-card);
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             width: 100%;
             max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .feature:hover {
+            border-color: var(--matrix-green);
+            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.1);
         }
         
         .feature-icon {
             font-size: 2.5rem;
-            color: var(--primary);
             margin-right: 20px;
+            background: linear-gradient(90deg, var(--electric-purple), var(--cyber-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         /* Contact Section */
         .contact-section {
-            background-color: var(--secondary);
-            color: white;
-            padding: 70px 0;
+            padding: 100px 0;
+            background: radial-gradient(circle at 70% 50%, rgba(0, 243, 255, 0.1) 0%, transparent 50%);
             text-align: center;
         }
         
         .contact-section h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .contact-info {
@@ -259,27 +435,52 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 40px;
-            margin-top: 40px;
+            margin-top: 60px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
             font-size: 1.1rem;
+            background-color: var(--dark-card);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            min-width: 250px;
+        }
+        
+        .contact-item:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
         }
         
         .contact-item i {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-right: 15px;
-            color: #ffd166;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 40px 0 20px;
+            background-color: #080810;
+            padding: 60px 0 30px;
             text-align: center;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .footer-links {
@@ -291,26 +492,27 @@
         }
         
         .footer-links a {
-            color: #ddd;
+            color: var(--text-gray);
             text-decoration: none;
+            transition: color 0.3s;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--neon-blue);
         }
         
         .copyright {
-            margin-top: 30px;
+            margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #aaa;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
             font-size: 0.9rem;
         }
         
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 2.8rem;
             }
             
             nav ul {
@@ -327,10 +529,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--secondary);
+                background-color: rgba(22, 22, 38, 0.95);
+                backdrop-filter: blur(10px);
                 padding: 20px;
                 text-align: center;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid rgba(0, 243, 255, 0.3);
             }
             
             .mobile-nav.active {
@@ -345,11 +548,15 @@
             .mobile-nav ul li {
                 margin: 15px 0;
             }
+            
+            .cyber-marquee-content {
+                animation-duration: 35s;
+            }
         }
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
@@ -357,7 +564,7 @@
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .feature {
@@ -369,24 +576,76 @@
                 margin-right: 0;
                 margin-bottom: 15px;
             }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-item i {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cyber-marquee-content {
+                animation-duration: 40s;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .price-tag {
+                font-size: 1.8rem;
+            }
+            
+            .cyber-marquee-content {
+                animation-duration: 50s;
+            }
+        }
+        
+        /* เพิ่มเอฟเฟกต์ Matrix Dots */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
         }
     </style>
 </head>
 <body>
+    <!-- แถบข้อความวิ่งไซเบอร์ด้านบนสุด -->
+    <div class="cyber-marquee">
+        <div class="cyber-marquee-content">
+            <i class="fas fa-bolt"></i> เปิดบริการ 24 ชม. ตลอด 7 วัน <i class="fas fa-star"></i> 
+            ซ่อมคอมพิวเตอร์เริ่มต้นเพียง 300 บาท <i class="fas fa-wifi"></i> 
+            ติดตั้งระบบเครือข่าย WiFi ครอบคลุมทั้งบ้าน 1,500 บาท <i class="fas fa-shield-alt"></i> 
+            รับประกันงานทุกประเภท 30 วัน <i class="fas fa-headset"></i> 
+            ปรึกษาฟรีไม่มีค่าใช้จ่าย <i class="fas fa-phone"></i> 
+            โทรด่วน 083-269-6984 <i class="fas fa-bolt"></i>
+        </div>
+    </div>
+    
     <!-- Header Section -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-laptop-code"></i>
-                <span>TK_Taecom99</span>
+                <i class="fas fa-satellite-dish"></i>
+                <span>TK_TAECOM99</span>
             </div>
             
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="#home">หน้าแรก</a></li>
-                    <li><a href="#services">บริการของเรา</a></li>
+                    <li><a href="#services">บริการ</a></li>
                     <li><a href="#pricing">ราคา</a></li>
-                    <li><a href="#contact">ติดต่อเรา</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
                 </ul>
             </nav>
             
@@ -398,9 +657,9 @@
         <nav class="mobile-nav" id="mobileNav">
             <ul>
                 <li><a href="#home">หน้าแรก</a></li>
-                <li><a href="#services">บริการของเรา</a></li>
+                <li><a href="#services">บริการ</a></li>
                 <li><a href="#pricing">ราคา</a></li>
-                <li><a href="#contact">ติดต่อเรา</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
             </ul>
         </nav>
     </header>
@@ -408,15 +667,18 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>บริการซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่าย</h1>
-            <p>เรามอบบริการซ่อมคอมพิวเตอร์ ติดตั้งกล้องวงจรปิด ติดตั้งระบบเครือข่ายสาย LAN และ WiFi ด้วยราคาย่อมเยาว์ที่คุณเข้าถึงได้ ปรึกษาฟรี ไม่มีค่าใช้จ่าย!</p>
-            <a href="#contact" class="cta-button">ปรึกษาฟรี ตอนนี้!</a>
+            <h1>TK_TAECOM99<br>เทคโนโลยีขั้นสูงในราคาย่อมเยา</h1>
+            <p>เราคือผู้เชี่ยวชาญด้านซ่อมคอมพิวเตอร์ ติดตั้งระบบเครือข่าย และกล้องวงจรปิด ด้วยเทคโนโลยีล้ำสมัยและทีมงานมืออาชีพ พร้อมให้บริการคุณทุกที่ทุกเวลา</p>
+            
+            <a href="#contact" class="cta-button pulse">
+                <i class="fas fa-comment-dots"></i> ปรึกษาฟรี ตอนนี้!
+            </a>
         </div>
     </section>
     
     <!-- Services Section -->
     <section class="container" id="services">
-        <h2 class="section-title">บริการของเรา</h2>
+        <h2 class="section-title neon-text">บริการของเรา</h2>
         
         <div class="services-grid">
             <div class="service-card">
@@ -424,7 +686,7 @@
                     <i class="fas fa-desktop"></i>
                 </div>
                 <h3>ซ่อมคอมพิวเตอร์</h3>
-                <p>บริการซ่อมคอมพิวเตอร์ทุกชนิด ทั้งฮาร์ดแวร์และซอฟต์แวร์ ด้วยทีมช่างผู้เชี่ยวชาญและอุปกรณ์ทันสมัย</p>
+                <p>บริการซ่อมบำรุงคอมพิวเตอร์และโน๊ตบุ๊คทุกรุ่น ทุกปัญหา ด้วยอุปกรณ์ไฮเทคและทีมช่างมืออาชีพ</p>
             </div>
             
             <div class="service-card">
@@ -432,7 +694,7 @@
                     <i class="fas fa-video"></i>
                 </div>
                 <h3>ติดตั้งกล้องวงจรปิด</h3>
-                <p>ออกแบบและติดตั้งระบบกล้องวงจรปิดครบวงจร เหมาะสำหรับบ้านและธุรกิจทุกขนาด รับประกันงานติดตั้ง</p>
+                <p>ออกแบบและติดตั้งระบบกล้องวงจรปิดครบวงจร รองรับการดูผ่านมือถือและบันทึกภาพความละเอียดสูง</p>
             </div>
             
             <div class="service-card">
@@ -440,7 +702,7 @@
                     <i class="fas fa-network-wired"></i>
                 </div>
                 <h3>ติดตั้งระบบเครือข่าย LAN</h3>
-                <p>ออกแบบระบบเครือข่ายสาย LAN สำหรับสำนักงาน บ้าน และสถานศึกษา พร้อมรับประกันการทำงาน</p>
+                <p>ออกแบบระบบเครือข่ายสาย LAN สำหรับทุกขนาดธุรกิจ รับประกันความเร็วและเสถียรภาพการเชื่อมต่อ</p>
             </div>
             
             <div class="service-card">
@@ -448,7 +710,7 @@
                     <i class="fas fa-wifi"></i>
                 </div>
                 <h3>ติดตั้งระบบ WiFi</h3>
-                <p>แก้ไขและติดตั้งระบบ WiFi ให้ครอบคลุมทุกพื้นที่ สัญญาณแรงและเสถียร พร้อมระบบรักษาความปลอดภัย</p>
+                <p>แก้ไขปัญหา WiFi ช้าและติดตั้งระบบ WiFi ครอบคลุมทุกพื้นที่ ด้วยเทคโนโลยี Mesh ล้ำสมัย</p>
             </div>
         </div>
     </section>
@@ -456,15 +718,15 @@
     <!-- Price Section -->
     <section class="price-section" id="pricing">
         <div class="container">
-            <h2 class="section-title">ราคาย่อมเยาว์ที่คุณเข้าถึงได้</h2>
+            <h2 class="section-title neon-text">ราคายุติธรรมคุณภาพพรีเมียม</h2>
             
             <div class="price-description">
-                <p>เรามุ่งมั่นให้บริการด้วยราคาที่เป็นธรรมและแข่งขันได้ ทุกบริการของเรามีราคาโปร่งใส ไม่มีค่าใช้จ่ายแอบแฝง คุณภาพงานได้มาตรฐานในราคาที่ไม่แพงอย่างที่คิด</p>
+                <p>เรามุ่งมั่นให้บริการด้วยราคาที่เป็นธรรม โปร่งใส ไม่มีค่าใช้จ่ายแอบแฝง คุณภาพงานได้มาตรฐานระดับสากลในราคาที่เข้าถึงได้</p>
             </div>
             
             <div style="text-align: center;">
                 <div class="price-tag">เริ่มต้นเพียง 300 บาท</div>
-                <p style="font-size: 1.2rem; margin-top: 10px;">สำหรับบริการตรวจเช็คและปรึกษาระบบฟรี</p>
+                <p style="font-size: 1.2rem; margin-top: 10px; color: var(--matrix-green);">สำหรับบริการตรวจเช็คและปรึกษาระบบฟรี</p>
             </div>
             
             <div class="features">
@@ -473,8 +735,8 @@
                         <i class="fas fa-hand-holding-usd"></i>
                     </div>
                     <div>
-                        <h3>ราคาคุ้มค่า</h3>
-                        <p>เราให้บริการในราคายุติธรรม พร้อมรับประกันคุณภาพงาน ไม่มีค่าใช้จ่ายเพิ่มเติมที่ไม่ได้ตกลงกันล่วงหน้า</p>
+                        <h3 style="color: var(--matrix-green);">ราคายุติธรรม</h3>
+                        <p style="color: var(--text-gray);">เราให้บริการในราคายุติธรรม พร้อมรับประกันคุณภาพงาน ไม่มีค่าใช้จ่ายเพิ่มเติมที่ไม่ได้ตกลงกันล่วงหน้า</p>
                     </div>
                 </div>
                 
@@ -483,18 +745,18 @@
                         <i class="fas fa-headset"></i>
                     </div>
                     <div>
-                        <h3>ปรึกษาฟรี</h3>
-                        <p>ปรึกษาปัญหาเกี่ยวกับคอมพิวเตอร์และระบบเครือข่ายกับเราได้ฟรี โดยไม่มีค่าใช้จ่ายใดๆ</p>
+                        <h3 style="color: var(--matrix-green);">ปรึกษาฟรี 24/7</h3>
+                        <p style="color: var(--text-gray);">ปรึกษาปัญหาเกี่ยวกับคอมพิวเตอร์และระบบเครือข่ายกับเราได้ตลอดเวลา โดยไม่มีค่าใช้จ่ายใดๆ</p>
                     </div>
                 </div>
                 
                 <div class="feature">
                     <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
                     <div>
-                        <h3>บริการรวดเร็ว</h3>
-                        <p>เราทำงานอย่างรวดเร็วและมีประสิทธิภาพ เพื่อลดเวลาที่ระบบของคุณต้องหยุดทำงาน</p>
+                        <h3 style="color: var(--matrix-green);">บริการฉุกเฉิน</h3>
+                        <p style="color: var(--text-gray);">เราทำงานอย่างรวดเร็วและมีประสิทธิภาพ เพื่อลดเวลาที่ระบบของคุณต้องหยุดทำงาน ลดความเสียหายทางธุรกิจ</p>
                     </div>
                 </div>
                 
@@ -503,8 +765,8 @@
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <div>
-                        <h3>รับประกันงาน</h3>
-                        <p>ทุกงานติดตั้งและซ่อมแซมเรารับประกันคุณภาพ พร้อมบริการหลังการขายที่คุณวางใจได้</p>
+                        <h3 style="color: var(--matrix-green);">รับประกันงาน</h3>
+                        <p style="color: var(--text-gray);">ทุกงานติดตั้งและซ่อมแซมเรารับประกันคุณภาพ พร้อมบริการหลังการขายที่คุณวางใจได้</p>
                     </div>
                 </div>
             </div>
@@ -514,12 +776,12 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2>ปรึกษาปัญหาฟรี! ติดต่อเราได้เลย</h2>
-            <p>เราพร้อมให้คำปรึกษาและแก้ไขปัญหาให้คุณโดยไม่มีค่าใช้จ่ายในการปรึกษาเบื้องต้น</p>
+            <h2>ติดต่อเราได้ทุกช่องทาง</h2>
+            <p style="color: var(--text-gray); max-width: 800px; margin: 0 auto 40px;">เราพร้อมให้คำปรึกษาและแก้ไขปัญหาให้คุณโดยไม่มีค่าใช้จ่ายในการปรึกษาเบื้องต้น</p>
             
             <div style="margin: 40px 0;">
-                <a href="tel:0832696984" class="cta-button">
-                    <i class="fas fa-phone-alt"></i> โทรหาตอนนี้: 083-269-6984
+                <a href="tel:0832696984" class="cta-button pulse">
+                    <i class="fas fa-phone-alt"></i> โทรด่วน: 083-269-6984
                 </a>
             </div>
             
@@ -529,6 +791,7 @@
                     <div>
                         <h3>โทรศัพท์</h3>
                         <p>083-269-6984</p>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">ตลอด 24 ชั่วโมง</p>
                     </div>
                 </div>
                 
@@ -537,6 +800,7 @@
                     <div>
                         <h3>อีเมล</h3>
                         <p>tum.rich.itsp@gmail.com</p>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">ตอบกลับภายใน 1 ชม.</p>
                     </div>
                 </div>
                 
@@ -546,6 +810,7 @@
                         <h3>เวลาทำการ</h3>
                         <p>จันทร์-เสาร์ 8:00-20:00 น.</p>
                         <p>อาทิตย์ 9:00-17:00 น.</p>
+                        <p style="color: var(--matrix-green); font-size: 0.9rem;">*บริการฉุกเฉิน 24 ชม.</p>
                     </div>
                 </div>
             </div>
@@ -555,12 +820,12 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="logo" style="justify-content: center;">
-                <i class="fas fa-laptop-code"></i>
-                <span>TK_Taecom99</span>
+            <div class="footer-logo">
+                <i class="fas fa-satellite-dish"></i>
+                TK_TAECOM99
             </div>
             
-            <p>บริการซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่ายครบวงจรในราคาย่อมเยาว์</p>
+            <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">บริการซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่ายครบวงจรด้วยเทคโนโลยีล้ำสมัยในราคาย่อมเยาว์</p>
             
             <div class="footer-links">
                 <a href="#home">หน้าแรก</a>
@@ -570,8 +835,8 @@
             </div>
             
             <div class="copyright">
-                <p>© 2026 TK_Taecom99. All rights reserved. | ออกแบบและพัฒนาโดย Sarawut.C</p>
-                <p>ออกแบบมาด้วยใจสำหรับธุรกิจบริการเทคโนโลยี</p>
+                <p>© 2026 TK_TAECOM99. All rights reserved. | ออกแบบและพัฒนาโดย Sarawut.C</p>
+                <p>เทคโนโลยีล้ำสมัย เพื่อธุรกิจที่ก้าวไกล</p>
             </div>
         </div>
     </footer>
@@ -613,6 +878,40 @@
                     });
                 }
             });
+        });
+        
+        // เพิ่มการหยุดชั่วคราวเมื่อเมาส์วางบนข้อความวิ่ง
+        document.querySelectorAll('.cyber-marquee-content').forEach(marquee => {
+            marquee.parentElement.addEventListener('mouseenter', () => {
+                marquee.style.animationPlayState = 'paused';
+            });
+            
+            marquee.parentElement.addEventListener('mouseleave', () => {
+                marquee.style.animationPlayState = 'running';
+            });
+        });
+        
+        // เพิ่มเอฟเฟกต์ Matrix dots สำหรับพื้นหลัง
+        document.addEventListener('DOMContentLoaded', function() {
+            const matrixBg = document.createElement('div');
+            matrixBg.className = 'matrix-bg';
+            document.body.appendChild(matrixBg);
+            
+            // สร้างจุด Matrix สำหรับพื้นหลัง
+            const dotsCount = 50;
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('div');
+                dot.style.position = 'absolute';
+                dot.style.width = '2px';
+                dot.style.height = '2px';
+                dot.style.backgroundColor = 'var(--neon-blue)';
+                dot.style.borderRadius = '50%';
+                dot.style.left = Math.random() * 100 + 'vw';
+                dot.style.top = Math.random() * 100 + 'vh';
+                dot.style.opacity = Math.random() * 0.5 + 0.1;
+                dot.style.boxShadow = '0 0 5px var(--neon-blue)';
+                matrixBg.appendChild(dot);
+            }
         });
     </script>
 </body>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TK_Taecom99- ซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่ายในราคาย่อมเยา</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #0077cc;
+            --secondary: #005fa3;
+            --accent: #ff6b35;
+            --light: #f8f9fa;
+            --dark: #333333;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* แถบข้อความวิ่งด้านบนสุด */
+        .top-marquee {
+            background: linear-gradient(to right, #ff6b35, #ff8e53);
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+        
+        .marquee-content i {
+            margin: 0 10px;
+            color: #ffd166;
+        }
+        
+        /* แถบข้อความวิ่งด้านล่าง */
+        .bottom-marquee {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 0;
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .marquee-content-alt {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+        
+        .marquee-content-alt span {
+            background-color: var(--accent);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd166;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+        
+        /* ข้อความวิ่งใน Hero Section */
+        .hero-marquee {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 30px auto;
+            max-width: 800px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+            color: #ffd166;
+            font-weight: 600;
+        }
+        
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            color: var(--secondary);
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 25px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        /* Price Section */
+        .price-section {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        .price-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-right: 20px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--secondary);
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: #ffd166;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .marquee-content, .marquee-content-alt, .hero-marquee-content {
+                animation-duration: 25s;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .mobile-nav ul li {
+                margin: 15px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .top-marquee, .bottom-marquee {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+            
+            .marquee-content, .marquee-content-alt, .hero-marquee-content {
+                animation-duration: 30s;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .marquee-content, .marquee-content-alt, .hero-marquee-content {
+                animation-duration: 40s;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- แถบข้อความวิ่งด้านบนสุด -->
+    <div class="top-marquee">
+        <div class="marquee-content">
+            <i class="fas fa-bullhorn"></i> โปรโมชั่นพิเศษ! ซ่อมคอมพิวเตอร์เริ่มต้นเพียง 300 บาท <i class="fas fa-star"></i> 
+            ติดตั้งระบบเครือข่าย WiFi ครอบคลุมทั้งบ้านเพียง 1,500 บาท <i class="fas fa-gift"></i> 
+            รับประกันงานทุกประเภท 30 วัน <i class="fas fa-check-circle"></i> 
+            ปรึกษาฟรีไม่มีค่าใช้จ่าย <i class="fas fa-headset"></i> 
+            โทรด่วน 083-269-6984 ตลอด 24 ชม. <i class="fas fa-phone"></i>
+        </div>
+    </div>
+    
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <span>TK_Taecom99</span>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#services">บริการของเรา</a></li>
+                    <li><a href="#pricing">ราคา</a></li>
+                    <li><a href="#contact">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#services">บริการของเรา</a></li>
+                <li><a href="#pricing">ราคา</a></li>
+                <li><a href="#contact">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>บริการซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่าย</h1>
+            <p>เรามอบบริการซ่อมคอมพิวเตอร์ ติดตั้งกล้องวงจรปิด ติดตั้งระบบเครือข่ายสาย LAN และ WiFi ด้วยราคาย่อมเยาว์ที่คุณเข้าถึงได้ ปรึกษาฟรี ไม่มีค่าใช้จ่าย!</p>
+            
+            <!-- ข้อความวิ่งใน Hero Section -->
+            <div class="hero-marquee">
+                <div class="hero-marquee-content">
+                    ✨ เปิดบริการทุกวันไม่มีหยุด ✨ | 🎯 รับซ่อมคอมพิวเตอร์ทุกรุ่นทุกยี่ห้อ 🎯 | 📡 ติดตั้งระบบเครือข่ายภายใน 1 วัน 📡 | 🏆 ผู้เชี่ยวชาญมากประสบการณ์ 🏆 | 💰 ราคายุติธรรม รับประกันความพอใจ 💰
+                </div>
+            </div>
+            
+            <a href="#contact" class="cta-button">ปรึกษาฟรี ตอนนี้!</a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="container" id="services">
+        <h2 class="section-title">บริการของเรา</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3>ซ่อมคอมพิวเตอร์</h3>
+                <p>บริการซ่อมคอมพิวเตอร์ทุกชนิด ทั้งฮาร์ดแวร์และซอฟต์แวร์ ด้วยทีมช่างผู้เชี่ยวชาญและอุปกรณ์ทันสมัย</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>ติดตั้งกล้องวงจรปิด</h3>
+                <p>ออกแบบและติดตั้งระบบกล้องวงจรปิดครบวงจร เหมาะสำหรับบ้านและธุรกิจทุกขนาด รับประกันงานติดตั้ง</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>ติดตั้งระบบเครือข่าย LAN</h3>
+                <p>ออกแบบระบบเครือข่ายสาย LAN สำหรับสำนักงาน บ้าน และสถานศึกษา พร้อมรับประกันการทำงาน</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3>ติดตั้งระบบ WiFi</h3>
+                <p>แก้ไขและติดตั้งระบบ WiFi ให้ครอบคลุมทุกพื้นที่ สัญญาณแรงและเสถียร พร้อมระบบรักษาความปลอดภัย</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Price Section -->
+    <section class="price-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">ราคาย่อมเยาว์ที่คุณเข้าถึงได้</h2>
+            
+            <div class="price-description">
+                <p>เรามุ่งมั่นให้บริการด้วยราคาที่เป็นธรรมและแข่งขันได้ ทุกบริการของเรามีราคาโปร่งใส ไม่มีค่าใช้จ่ายแอบแฝง คุณภาพงานได้มาตรฐานในราคาที่ไม่แพงอย่างที่คิด</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <div class="price-tag">เริ่มต้นเพียง 300 บาท</div>
+                <p style="font-size: 1.2rem; margin-top: 10px;">สำหรับบริการตรวจเช็คและปรึกษาระบบฟรี</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div>
+                        <h3>ราคาคุ้มค่า</h3>
+                        <p>เราให้บริการในราคายุติธรรม พร้อมรับประกันคุณภาพงาน ไม่มีค่าใช้จ่ายเพิ่มเติมที่ไม่ได้ตกลงกันล่วงหน้า</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div>
+                        <h3>ปรึกษาฟรี</h3>
+                        <p>ปรึกษาปัญหาเกี่ยวกับคอมพิวเตอร์และระบบเครือข่ายกับเราได้ฟรี โดยไม่มีค่าใช้จ่ายใดๆ</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3>บริการรวดเร็ว</h3>
+                        <p>เราทำงานอย่างรวดเร็วและมีประสิทธิภาพ เพื่อลดเวลาที่ระบบของคุณต้องหยุดทำงาน</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3>รับประกันงาน</h3>
+                        <p>ทุกงานติดตั้งและซ่อมแซมเรารับประกันคุณภาพ พร้อมบริการหลังการขายที่คุณวางใจได้</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>ปรึกษาปัญหาฟรี! ติดต่อเราได้เลย</h2>
+            <p>เราพร้อมให้คำปรึกษาและแก้ไขปัญหาให้คุณโดยไม่มีค่าใช้จ่ายในการปรึกษาเบื้องต้น</p>
+            
+            <div style="margin: 40px 0;">
+                <a href="tel:0832696984" class="cta-button">
+                    <i class="fas fa-phone-alt"></i> โทรหาตอนนี้: 083-269-6984
+                </a>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>โทรศัพท์</h3>
+                        <p>083-269-6984</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>อีเมล</h3>
+                        <p>tum.rich.itsp@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>เวลาทำการ</h3>
+                        <p>จันทร์-เสาร์ 8:00-20:00 น.</p>
+                        <p>อาทิตย์ 9:00-17:00 น.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- แถบข้อความวิ่งด้านล่าง -->
+    <div class="bottom-marquee">
+        <div class="marquee-content-alt">
+            <span>HOT!</span> ติดตั้งกล้องวงจรปิด 4 ตัว + เครื่องบันทึกภาพ เพียง 4,500 บาท <span>NEW!</span> 
+            อัพเกรดคอมพิวเตอร์ฟรีค่าตรวจสอบ <span>SALE!</span> 
+            ติดตั้ง WiFi ครอบคลุมทั้งบ้าน พร้อมอุปกรณ์ครบชุด 2,200 บาท <span>DEAL!</span> 
+            ซ่อมโน๊ตบุ๊คหน้าจอแตก เริ่มต้น 1,500 บาท <span>OFFER!</span> 
+            สาย LAN ติดตั้งฟรีเมื่อซื้ออุปกรณ์ครบ 5,000 บาท <span>PROMO!</span>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center;">
+                <i class="fas fa-laptop-code"></i>
+                <span>TK_Taecom99</span>
+            </div>
+            
+            <p>บริการซ่อมคอมพิวเตอร์และติดตั้งระบบเครือข่ายครบวงจรในราคาย่อมเยาว์</p>
+            
+            <div class="footer-links">
+                <a href="#home">หน้าแรก</a>
+                <a href="#services">บริการ</a>
+                <a href="#pricing">ราคา</a>
+                <a href="#contact">ติดต่อ</a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2026 TK_Taecom99. All rights reserved. | ออกแบบและพัฒนาโดย Sarawut.C</p>
+                <p>ออกแบบมาด้วยใจสำหรับธุรกิจบริการเทคโนโลยี</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mobileNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // เพิ่มการหยุดชั่วคราวเมื่อเมาส์วางบนข้อความวิ่ง
+        document.querySelectorAll('.marquee-content, .marquee-content-alt, .hero-marquee-content').forEach(marquee => {
+            marquee.parentElement.addEventListener('mouseenter', () => {
+                marquee.style.animationPlayState = 'paused';
+            });
+            
+            marquee.parentElement.addEventListener('mouseleave', () => {
+                marquee.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>
